@@ -1,0 +1,18 @@
+    /* Key Frames */
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    @keyframes shake { 10%, 90% { transform: translateX(-1px); } 20%, 80% { transform: translateX(2px); } 30%, 50%, 70% { transform: translateX(-4px); } 40%, 60% { transform: translateX(4px); } }
+    @keyframes flash { 0%, 50%, 100% { background-color: white; } 25%, 75% { background-color: yellow; }}
+
+    /* Animations */
+
+    .anim-card-fade { animation: fadeUp var(--anim-duration, 500ms) ease both; }
+    .anim-card-pop  { animation: popIn var(--anim-duration, 500ms) ease both; }
+    .anim-item-fade { animation: fadeUp var(--anim-duration, 400ms) ease both; }
+    .anim-item-pop  { animation: popIn var(--anim-duration, 400ms) ease both; }
+    .shake { animation: shake 400ms; }
+    .flash { animation: flash 0.5s ease-in-out 6; /* flashes 3 times */ }
+    .badge-cap { font-size: .75rem; transition: background-color 0.3s ease, color 0.3s ease; }
+    body, .card, .list-group-item, .modal-content, .navbar { transition: background-color .2s ease, color .2s ease; }
+    .swap-anim { transition: transform 0.25s ease, background-color 0.4s ease; }

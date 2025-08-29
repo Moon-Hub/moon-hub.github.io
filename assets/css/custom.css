@@ -1,0 +1,23 @@
+    
+    @import url("theme.css");
+
+    /* List Group Drag & Drop */
+
+    .cursor-grab { cursor: grab; }
+    .cursor-grabbing { cursor: grabbing; }
+    .drag-handle { cursor: grab; user-select: none; font-size: 1.1em; float: right; }
+    .list-group-item:active .drag-handle { cursor: grabbing; }
+    .list-group.min-height { min-height: 3rem; }
+    .row { align-items: flex-start; } /* Prevent Stretching of table items */
+    .swap-highlight {  background-color: var(--bs-primary); transition: background-color 0s ease-in, /* instant on */ background-color 0.4s ease-out 0.05s; /* smooth fade out */ }
+    .drop-preview { outline: 2px dashed var(--deep-night); outline-offset: -4px; background-color: rgba(179, 137, 60, 0.6); transition: background-color 0.2s ease; }
+
+    /* Navigation & Buttons */
+    .navbar {background-color: var(--arcane-blue);}
+    .navbar-brand img { margin-right:10px; }
+    .navbar a {color: var(--bs-light);}
+    .navbar a:hover {color: var(--arcane-gold);}
+    .btn-deep-night { background-color: var(--deep-night); color: white;}
+    .btn-deep-night:hover { background-color: var(--deep-night); color: var(--arcane-gold);}
+    .btn-arcane-blue { background-color: var(--arcane-blue); color: white;}
+    .btn-arcane-blue:hover { background-color: var(--deep-night); color: white; }
