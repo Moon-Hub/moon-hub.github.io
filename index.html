@@ -21,7 +21,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg border-bottom">
-    <div class="container">
+    <div class="container-lg" id="navContainer">
       <a class="navbar-brand" href="#">
       <img src="assets/img/LotusGridLogo.png" alt="Logo" width="32" height="32" class="d-inline-block align-text-top">Lotus Grid</a>
       <div class="ms-auto d-flex gap-2">
@@ -41,7 +41,7 @@
     </div>
   </nav>
 
-  <div class="container py-4">
+  <div class="container-lg py-4" id="appContainer">
     <!-- Collapsible Input Section -->
     <div class="collapse show" id="inputCollapse">
       <div class="row g-3 align-items-stretch">
@@ -72,43 +72,111 @@
 
   <!-- Settings Modal -->
   <div class="modal fade" id="settingsModal" tabindex="-1">
-    <div class="modal-dialog"><div class="modal-content">
+    <div class="modal-dialog">
+      <div class="modal-content">
       <div class="modal-header"><h5 class="modal-title">Settings</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
       <div class="modal-body">
-        <div class="mb-3">
-          <label for="seatsPerTable" class="form-label">Seats per table</label>
-          <input id="seatsPerTable" type="number" class="form-control" min="1" value="4">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                <span class="pe-2"><i class="bi bi-ui-checks-grid"></i></span>Seats
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="">
+                  <label for="seatsPerTable" class="form-label">Seats per table</label>
+                  <input id="seatsPerTable" type="number" class="form-control" min="1" value="4">
+                </div>  
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                <span class="pe-2"><i class="bi bi-shuffle"></i></span>Shuffling & Duplication
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="shuffleSwitch" checked>
+                  <label class="form-check-label" for="shuffleSwitch">Shuffle names on generate</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="dedupeSwitch" checked>
+                  <label class="form-check-label" for="dedupeSwitch">Remove duplicate names</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                <span class="pe-2"><i class="bi bi-file-image-fill"></i></span>Animations
+              </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="mb-3">
+                  <label for="animStyle" class="form-label">Animation style</label>
+                  <select id="animStyle" class="form-select">
+                    <option value="fade">Fade</option>
+                    <option value="pop">Pop</option>
+                    <option value="none">None</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="animSpeed" class="form-label">Animation speed</label>
+                  <input id="animSpeed" type="range" min="0.5" max="2" step="0.1" value="1" class="form-range">
+                  <div class="d-flex justify-content-between"><small>0.5x</small><small id="animSpeedLabel">1x</small><small>2x</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                <span class="pe-2"><i class="bi bi-alarm-fill"></i></span>Timer
+              </button>
+            </h2>
+            <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div>
+                  <label for="timerLength" class="form-label">
+                    Default Timer Length (minutes)
+                  </label>
+                  <input type="number" id="timerLength" class="form-control" min="1" value="50">
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                <span class="pe-2"><i class="bi bi-aspect-ratio-fill"></i></span>App Size</div>
+              </button>
+            </h2>
+            <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+              <div>
+                <label for="containerOptions" class="">App Max Widths</label>
+                <div class="btn-group d-flex align-items-center" role="group" aria-label="Basic example" id="containerOptions">
+                  <button type="button" class="btn btn-arcane-blue" data-size="lg">L</button>
+                  <button type="button" class="btn btn-arcane-blue" data-size="xl">XL</button>
+                  <button type="button" class="btn btn-arcane-blue" data-size="xxl">XXL</button>
+                  <button type="button" class="btn btn-arcane-blue" data-size="fluid">Max</button>
+                </div>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer"><button id="saveSettingsBtn" type="button" class="btn btn-arcane-blue" data-bs-dismiss="modal">Save Settings</button></div>
         </div>
-        <div class="form-check form-switch mb-3">
-          <input class="form-check-input" type="checkbox" id="shuffleSwitch" checked>
-          <label class="form-check-label" for="shuffleSwitch">Shuffle names on generate</label>
-        </div>
-        <div class="mb-3">
-          <label for="animStyle" class="form-label">Animation style</label>
-          <select id="animStyle" class="form-select">
-            <option value="fade">Fade</option>
-            <option value="pop">Pop</option>
-            <option value="none">None</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="animSpeed" class="form-label">Animation speed</label>
-          <input id="animSpeed" type="range" min="0.5" max="2" step="0.1" value="1" class="form-range">
-          <div class="d-flex justify-content-between"><small>0.5x</small><small id="animSpeedLabel">1x</small><small>2x</small></div>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="dedupeSwitch" checked>
-          <label class="form-check-label" for="dedupeSwitch">Remove duplicate names</label>
-        </div>
-        <div class="mb-3">
-        <label for="timerLength" class="form-label">
-          Default Timer Length (minutes)
-        </label>
-        <input type="number" id="timerLength" class="form-control" min="1" value="50">
       </div>
-      </div>
-      <div class="modal-footer"><button id="saveSettingsBtn" type="button" class="btn btn-arcane-blue" data-bs-dismiss="modal">Save settings</button></div>
-    </div></div>
+    </div>
   </div>
 
   <!-- Timer Modal -->
