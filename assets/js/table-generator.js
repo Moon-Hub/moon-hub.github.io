@@ -1,16 +1,17 @@
 import { enableDragDrop, updateCounts } from './drag-drop.js';
 import { namesInput, seatsPerTableInput, animStyleSelect, animSpeedInput } from './constants.js';
 
-    let seatsPerTable = parseInt(seatsPerTableInput.value, 10);
-    let animStyle = animStyleSelect.value;
-    let animSpeed = parseFloat(animSpeedInput.value);
-
     animSpeedInput.addEventListener('input', () => {
       animSpeed = parseFloat(animSpeedInput.value);
       animSpeedLabel.textContent = animSpeed + 'x';
     });
 
     document.getElementById('generateBtn').addEventListener('click', () => {
+
+      let seatsPerTable = parseInt(seatsPerTableInput.value, 10);
+      let animStyle = animStyleSelect.value;
+      let animSpeed = parseFloat(animSpeedInput.value);
+
       let names = namesInput.value.split('\n').map(n => n.trim()).filter(n => n);
       if (dedupeSwitch.checked) names = [...new Set(names)];
       if (shuffleSwitch.checked) names.sort(() => Math.random() - 0.5);
