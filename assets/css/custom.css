@@ -21,3 +21,9 @@
     .btn-deep-night:hover { background-color: var(--deep-night); color: var(--arcane-gold);}
     .btn-arcane-blue { background-color: var(--arcane-blue); color: white;}
     .btn-arcane-blue:hover { background-color: var(--deep-night); color: white; }
+    .active { background-color: var(--arcane-gold) !important; color: white;}
+    .active:hover {border: 1px solid var(--arcane-blue) !important; color: var(--arcane-blue)}
+
+    /* Accordion */
+
+    .accordion-item { border: none; }
