@@ -27,3 +27,8 @@
     /* Accordion */
 
     .accordion-item { border: none; }
+
+    /* Checkboxes */
+
+    .form-check-input:checked { background-color: var(--arcane-blue); border-color: var(--arcane-blue); }
+    code { color: rgba(13,110,253,.5) }
