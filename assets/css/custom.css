@@ -13,16 +13,18 @@
     .drop-preview { outline: 2px dashed var(--deep-night); outline-offset: -4px; background-color: rgba(179, 137, 60, 0.6); transition: background-color 0.2s ease; }
 
     /* Navigation & Buttons */
-    .navbar {background-color: var(--arcane-blue);}
+    .navbar {background-color: var(--obsidian-base);}
     .navbar-brand img { margin-right:10px; }
     .navbar a {color: var(--bs-light);}
     .navbar a:hover {color: var(--arcane-gold);}
-    .btn-deep-night { background-color: var(--deep-night); color: white;}
-    .btn-deep-night:hover { background-color: var(--deep-night); color: var(--arcane-gold);}
-    .btn-arcane-blue { background-color: var(--arcane-blue); color: white;}
-    .btn-arcane-blue:hover { background-color: var(--deep-night); color: white; }
-    .active { background-color: var(--arcane-gold) !important; color: white;}
-    .active:hover {border: 1px solid var(--arcane-blue) !important; color: var(--arcane-blue)}
+
+    .btn-obsidian { background-color: var(--obsidian-base); color: var(--bs-light);}
+    .btn-obsidian:hover, .btn-obsidian:hover:active { background-color: var(--obsidian-deep); color: var(--arcane-gold-light); border: 1px solid var(--obsidian-deep)}
+    .btn-obsidian:active, .btn-obsidian.active, .btn-obsidian:focus {background-color: var(--obsidian-darkest); color: var(--arcane-gold-dark); }
+
+    .btn-mystic-sapphire { background-color: var(--sapphire-mid); color: var(--bs-light); }
+    .btn-mystic-sapphire:hover, .btn-mystic-sapphire:hover:active { background-color: var(--sapphire-deep); color: var(--bs-light); border: 1px solid var(--sapphire-deep); }
+    .btn-mystic-sapphire:active, .btn.active, .btn-mystic-sapphire.active, .btn-mystic-sapphire:focus {background-color: var(--sapphire-darkest); color: var(--bs-light); border: 1px solid var(--sapphire-darkest); }
 
     /* Accordion */
 
@@ -30,5 +32,7 @@
 
     /* Checkboxes */
 
-    .form-check-input:checked { background-color: var(--arcane-blue); border-color: var(--arcane-blue); }
+    .form-check-input:checked { background-color: var(--sapphire-base); border-color: var(--sapphire-base); }
     code { color: rgba(13,110,253,.5) }
+
+    .vr { background-color: var(--arcane-gold-light); width: 1px;}
