@@ -1,13 +1,12 @@
 import { toasts } from "./constants.js";
 
 let currentPreview = null;
+const appContainer = document.getElementById('appContainer');
+const draggables = appContainer.querySelectorAll('.list-group-item');
+const containers = appContainer.querySelectorAll('.list-group');
 
 // Drag-and-drop
 export function enableDragDrop() {
-  const appContainer = document.getElementById('appContainer');
-
-  const draggables = appContainer.querySelectorAll('.list-group-item');
-  const containers = appContainer.querySelectorAll('.list-group');
 
   draggables.forEach(item => {
     item.setAttribute('draggable', true);
@@ -174,7 +173,7 @@ function getDragAfterElement(container, y) {
     }
 
     export function updateCounts() {
-      document.querySelectorAll('.list-group').forEach(container => {
+      containers.forEach(container => {
         const count = container.children.length;
         const badge = container.parentElement.querySelector('.badge-cap');
         badge.textContent = `${count}/${seatsPerTable}`;
