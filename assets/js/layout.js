@@ -1,10 +1,12 @@
 import { enableDragDrop, updateCounts } from './drag-drop.js';
 import { output, toasts } from './constants.js';
 
+const appContainer = document.querySelector('#appContainer');
+
 // Save Layout
 document.getElementById('saveBtn').addEventListener('click', () => {
         const layout = [];
-        document.querySelectorAll('.list-group').forEach(container => {
+        appContainer.querySelectorAll('.list-group').forEach(container => {
         layout.push([...container.querySelectorAll('.list-group-item')].map(li => li.childNodes[0].textContent));
     });
       localStorage.setItem('layout', JSON.stringify(layout));
