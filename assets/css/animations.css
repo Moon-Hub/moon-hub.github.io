@@ -16,3 +16,6 @@
     .badge-cap { font-size: .75rem; transition: background-color 0.3s ease, color 0.3s ease; }
     body, .card, .list-group-item, .modal-content, .navbar { transition: background-color .2s ease, color .2s ease; }
     .swap-anim { transition: transform 0.25s ease, background-color 0.4s ease; }
+
+    .container-fluid {max-width: 100% !important; } /*Required for Transition */
+    .container-xl, .container-xxl, .container-fluid { transition: max-width .7s ease;}
