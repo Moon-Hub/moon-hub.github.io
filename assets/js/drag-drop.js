@@ -4,8 +4,10 @@ let currentPreview = null;
 
 // Drag-and-drop
 export function enableDragDrop() {
-  const draggables = document.querySelectorAll('.list-group-item');
-  const containers = document.querySelectorAll('.list-group');
+  const appContainer = document.getElementById('appContainer');
+
+  const draggables = appContainer.querySelectorAll('.list-group-item');
+  const containers = appContainer.querySelectorAll('.list-group');
 
   draggables.forEach(item => {
     item.setAttribute('draggable', true);
