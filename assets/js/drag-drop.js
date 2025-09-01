@@ -4,6 +4,7 @@ let currentPreview = null;
 
 // Drag-and-drop
 export function enableDragDrop() {
+
   const appContainer = document.getElementById('appContainer');
   const draggables = appContainer.querySelectorAll('.list-group-item');
   const containers = appContainer.querySelectorAll('.list-group');
@@ -173,7 +174,11 @@ function getDragAfterElement(container, y) {
     }
 
     export function updateCounts() {
-      document.querySelectorAll('.list-group').forEach(container => {
+
+      const appContainer = document.getElementById('appContainer');
+      const containers = appContainer.querySelectorAll('.list-group');
+
+      containers.forEach(container => {
         const count = container.children.length;
         const badge = container.parentElement.querySelector('.badge-cap');
         badge.textContent = `${count}/${seatsPerTable}`;
