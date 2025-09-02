@@ -58,15 +58,15 @@ function openGroupLockModal(names) {
     const div = document.createElement('div');
     div.className = 'col-lg-6';
     div.innerHTML = `
-      <div class="card p-2 d-flex flex-row align-items-center">
+      <div class="card p-2 d-flex flex-row align-items-center rounded-0">
         <strong class="flex-grow-1">${name}</strong>
         <div class="form-check mx-3 mb-0 d-flex flex-row align-items-center">
-          <input class="form-check-input group-lock-toggle" type="checkbox" id="lock-${index}">
+          <input class="form-check-input group-lock-toggle rounded-0" type="checkbox" id="lock-${index}">
           <label class="form-check-label ps-2" for="lock-${index}"><i class="bi bi-unlock-fill"></i></label>
         </div>
         <div class="d-flex flex-row align-items-center">
           <label for="table-${index}" class="form-label me-2 mb-0 small">Table:</label>
-          <input type="number" class="form-control form-control-sm" id="table-${index}" value="1" min="1" title="Use arrows to select tables">
+          <input type="number" class="form-control form-control-sm rounded-0" id="table-${index}" value="1" min="1" title="Use arrows to select tables">
         </div>
       </div>
     `;
@@ -149,7 +149,7 @@ while (remaining.length > 0) {
     card.className = `${colClass} mb-3 anim-card-${animStyle}`;
     card.style.setProperty('--anim-duration', animSpeed + 's');
     card.innerHTML = `
-      <div class="card h-100">
+      <div class="card h-100 rounded-0">
         <div class="card-header d-flex justify-content-between align-items-center">
           <span>Table ${tableNum}</span>
           <span class="badge bg-secondary badge-cap">${tableNames.length}/${seatsPerTable}</span>
