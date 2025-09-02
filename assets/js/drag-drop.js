@@ -2,34 +2,115 @@ import { toasts } from "./constants.js";
 
 let currentPreview = null;
 
-// Drag-and-drop
 export function enableDragDrop() {
-
   const appContainer = document.getElementById('appContainer');
-  const draggables = appContainer.querySelectorAll('.list-group-item');
   const containers = appContainer.querySelectorAll('.list-group');
 
-  draggables.forEach(item => {
-    item.setAttribute('draggable', true);
-    item.addEventListener('dragstart', () => {
-      item.classList.add('cursor-grabbing');
-      setTimeout(() => item.classList.add('invisible'), 0);
-    });
-    item.addEventListener('dragend', () => {
-      item.classList.remove('cursor-grabbing', 'invisible');
-      clearPreview();
-    });
+  let swapMode = false;       // user intent
+  let lastHover = null;       // highlight the candidate to swap with
+
+  // Allow toggling intent mid-drag
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Shift') swapMode = true;
+  });
+  document.addEventListener('keyup', e => {
+    if (e.key === 'Shift') swapMode = false;
   });
 
   containers.forEach(container => {
-    container.addEventListener('dragover', e => handleDragOver(e, container));
-    container.addEventListener('dragleave', clearPreview);
-    container.addEventListener('drop', e => {
-      e.preventDefault();
-      clearPreview();
+    const sortable = Sortable.create(container, {
+      group: { name: 'tables', pull: true, put: true },
+      animation: 150,
+      fallbackTolerance: 3,
+
+      // Swap plugin defaults off; we toggle it during drag
+      swap: false,
+      swapClass: 'swap-highlight',
+      swapOnDrop: true,       // only swap when dropping on an item (not while hovering)
+      invertSwap: false,      // keep predictable targeting
+      swapThreshold: 0.5,
+      invertSwap: true,
+
+      onStart: evt => {
+        // Snapshot modifier at drag start for consistency; user can still toggle mid-drag
+        const shiftAtStart = !!evt.originalEvent?.shiftKey;
+        swapMode = swapMode || shiftAtStart;
+        sortable.option('swap', swapMode);
+      },
+
+      onMove: evt => {
+        const { from, to, related, dragged } = evt;
+        const isSame = from === to;
+        const targetList = to;
+        const count = targetList.children.length;
+        const fromCount = from.children.length;
+        const toCount = to.children.length;
+
+
+        // Keep target instance in sync with current intent
+        const toInst = Sortable.get(to);
+        const fromInst = Sortable.get(from);
+        if (toInst) toInst.option('swap', swapMode);
+        if (fromInst) fromInst.option('swap', swapMode);
+
+        // Manage hover highlight for swap candidate
+        if (lastHover && lastHover !== related) {
+          lastHover.classList.remove('swap-candidate');
+          lastHover = null;
+        }
+        if (swapMode && related && related !== dragged) {
+          related.classList.add('swap-candidate');
+          lastHover = related;
+        }
+
+        // Prevent removing the last person from a table
+        if (!isSame && fromCount === 1) {
+          toasts.full.show?.("Can't leave a table empty");
+          from.classList.add('shake');
+          setTimeout(() => from.classList.remove('shake'), 400);
+          return false;
+        }
+
+        // Seat cap logic:
+        // - Move into full list: block
+        // - Swap into full list: allow only if hovering a concrete target item
+        if (!isSame) {
+          if (!swapMode && count >= seatsPerTable) {
+            toasts.full.show();
+            targetList.classList.add('shake');
+            setTimeout(() => targetList.classList.remove('shake'), 400);
+            return false;
+          }
+          if (swapMode) {
+            // If list is full, ensure we actually have a target to swap with
+            if (count >= seatsPerTable && !related) {
+              toasts.full.show();
+              targetList.classList.add('shake');
+              setTimeout(() => targetList.classList.remove('shake'), 400);
+              return false;
+            }
+          }
+        }
+
+        return true;
+      },
+
+      onEnd: evt => {
+        // Clean up hover styling
+        if (lastHover) {
+          lastHover.classList.remove('swap-candidate');
+          lastHover = null;
+        }
+
+        // Reset swap option on this instance to default off
+        sortable.option('swap', false);
+
+        updateCounts();
+      }
     });
   });
 }
+
 
 // Drop Preview
 function clearPreview() {
