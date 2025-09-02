@@ -26,42 +26,42 @@
       <img src="assets/img/LotusGridLogo.png" alt="Logo" width="32" height="32" class="d-inline-block align-text-top">Lotus Grid</a>
       <div class="ms-auto d-flex gap-2">
         <div class="vr"></div>
-        <button id="darkToggle" class="btn btn-obsidian" type="button">
+        <button id="darkToggle" class="btn btn-obsidian rounded-0" type="button">
           <span id="darkIcon"><i class="bi bi-moon-stars-fill"></i></span>
         </button>
-        <button class="btn btn-obsidian" type="button" data-bs-toggle="collapse" data-bs-target="#inputCollapse" aria-expanded="true" aria-controls="inputCollapse">
+        <button class="btn btn-obsidian rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#inputCollapse" aria-expanded="true" aria-controls="inputCollapse">
           <i class="bi bi-toggles"></i> Hide Input
         </button>
-        <button id="timerBtn" class="btn btn-obsidian">
+        <button id="timerBtn" class="btn btn-obsidian rounded-0">
           <i class="bi bi-stopwatch"></i> Start Timer
         </button>
-        <button class="btn btn-obsidian" data-bs-toggle="modal" data-bs-target="#settingsModal" type="button">
+        <button class="btn btn-obsidian rounded-0" data-bs-toggle="modal" data-bs-target="#settingsModal" type="button">
           <i class="bi bi-sliders"></i> Settings
         </button>
       </div>
     </div>
   </nav>
 
-  <div class="container-xl pt-3" id="appContainer">
+  <div class="container-xl mt-3" id="appContainer">
     <!-- Collapsible Input Section -->
     <div class="collapse show" id="inputCollapse">
       <div class="row g-3 align-items-stretch">
         <div class="col-12 col-lg-8 d-flex flex-column">
-          <textarea id="names" class="form-control flex-grow-1" placeholder="Enter names ... one per line ...&#10;John Doe&#10;Jane Smith"></textarea>
+          <textarea id="names" class="form-control flex-grow-1 rounded-0" placeholder="Enter names ... one per line ...&#10;John Doe&#10;Jane Smith"></textarea>
         </div>
         <div class="col-12 col-lg-4 d-flex flex-column">
           <div class="d-grid gap-2 h-100">
-            <button id="generateBtn" class="btn btn-mystic-sapphire"><i class="bi bi-shuffle"></i> Generate Tables</button>
-            <button id="saveBtn" class="btn btn-mystic-sapphire"><i class="bi bi-save"></i> Save Table Layout</button>
-            <button id="loadBtn" class="btn btn-mystic-sapphire"><i class="bi bi-folder2-open"></i> Re-Load Layout</button>
-            <button id="clearBtn" class="btn btn-mystic-sapphire"><i class="bi bi-trash"></i> Clear Tables</button>
+            <button id="generateBtn" class="btn btn-mystic-sapphire rounded-0"><i class="bi bi-shuffle"></i> Generate Tables</button>
+            <button id="saveBtn" class="btn btn-mystic-sapphire rounded-0"><i class="bi bi-save"></i> Save Table Layout</button>
+            <button id="loadBtn" class="btn btn-mystic-sapphire rounded-0"><i class="bi bi-folder2-open"></i> Re-Load Layout</button>
+            <button id="clearBtn" class="btn btn-mystic-sapphire rounded-0"><i class="bi bi-trash"></i> Clear Tables</button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Output -->
-    <div id="output" class="mt-4"></div>
+    <div id="output" class="mt-3"></div>
   </div>
 
   <!-- Toasts -->
@@ -74,7 +74,7 @@
   <!-- Settings Modal -->
   <div class="modal fade" id="settingsModal" tabindex="-1">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content rounded-0">
       <div class="modal-header"><h5 class="modal-title">Settings</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
       <div class="modal-body">
         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -90,7 +90,7 @@
                   <li class="list-group-item p-1">
                     <div class="form-check p-0">
                       <label for="seatsPerTable" class="form-label">Seats per table</label>
-                      <input id="seatsPerTable" type="number" class="form-control" min="1" value="4">
+                      <input id="seatsPerTable" type="number" class="form-control rounded-0" min="1" value="4">
                     </div>
                   </li>
                 </ul>
@@ -108,13 +108,13 @@
               <ul class="list-group list-group-flush pt-1">
                 <li class="list-group-item">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="shuffleSwitch" checked>
+                    <input class="form-check-input rounded-0" type="checkbox" id="shuffleSwitch" checked>
                     <label class="form-check-label" for="shuffleSwitch">Shuffle names on generate</label>
                   </div>
                 </li>
                 <li class="list-group-item">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="dedupeSwitch" checked>
+                    <input class="form-check-input rounded-0" type="checkbox" id="dedupeSwitch" checked>
                     <label class="form-check-label" for="dedupeSwitch">Remove duplicate names</label>
                   </div>
                 </li>
@@ -134,7 +134,7 @@
                 <li class="list-group-item p-1">
                   <div class="p-0 pb-1">
                     <label for="animStyle" class="form-label">Animation style</label>
-                    <select id="animStyle" class="form-select">
+                    <select id="animStyle" class="form-select rounded-0">
                       <option value="fade">Fade</option>
                       <option value="pop">Pop</option>
                       <option value="none">None</option>
@@ -168,7 +168,7 @@
                       <label for="timerLength" class="form-label">
                         Default Timer Length (minutes)
                       </label>
-                      <input type="number" id="timerLength" class="form-control" min="1" value="50">
+                      <input type="number" id="timerLength" class="form-control rounded-0" min="1" value="50">
                     </div>
                   </li>
                 </ul>
@@ -190,15 +190,15 @@
                       <ul class="list-group list-group-flush pt-1">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                           Option 1 <code>1140px</code>
-                          <button type="button" class="btn btn-sm btn-mystic-sapphire" data-size="xl">Set</button>
+                          <button type="button" class="btn btn-sm btn-mystic-sapphire rounded-0" data-size="xl">Set</button>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                           Option 2 <code>1320px</code>
-                            <button type="button" class="btn btn-sm btn-mystic-sapphire" data-size="xxl">Set</button>
+                            <button type="button" class="btn btn-sm btn-mystic-sapphire rounded-0" data-size="xxl">Set</button>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                           Option 3 <code>100% Width</code>
-                          <button type="button" class="btn btn-sm btn-mystic-sapphire" data-size="fluid">Set</button>
+                          <button type="button" class="btn btn-sm btn-mystic-sapphire rounded-0" data-size="fluid">Set</button>
                         </li>
                       </ul>
                   </div>
@@ -208,7 +208,7 @@
               </div>
             </div>
           </div>
-          <div class="modal-footer"><button id="saveSettingsBtn" type="button" class="btn btn-mystic-sapphire" data-bs-dismiss="modal">Save Settings</button></div>
+          <div class="modal-footer"><button id="saveSettingsBtn" type="button" class="btn btn-mystic-sapphire rounded-0" data-bs-dismiss="modal">Save Settings</button></div>
         </div>
       </div>
     </div>
@@ -217,7 +217,7 @@
   <!-- Timer Modal -->
   <div class="modal fade" id="timerModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-center">
+      <div class="modal-content text-center rounded-0">
         <div class="modal-header">
           <h5 class="modal-title"><i class="bi bi-stopwatch"></i> Countdown Timer</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -225,8 +225,8 @@
         <div class="modal-body">
           <h1 id="timerDisplay" class="display-3 fw-bold">50:00</h1>
           <div class="d-flex justify-content-center gap-2 mt-3">
-            <button id="startPauseBtn" class="btn btn-mystic-sapphire"><i class="bi bi-play-fill"></i> Start</button>
-            <button id="resetBtn" class="btn btn-mystic-sapphire"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+            <button id="startPauseBtn" class="btn btn-mystic-sapphire rounded-0"><i class="bi bi-play-fill"></i> Start</button>
+            <button id="resetBtn" class="btn btn-mystic-sapphire rounded-0"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
           </div>
         </div>
       </div>
@@ -235,7 +235,7 @@
 
   <div class="modal fade" id="groupLockModal" tabindex="-1" aria-labelledby="groupLockLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal-content rounded-0">
       <div class="modal-header">
         <h5 class="modal-title" id="groupLockLabel">Customise Group Locks</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -246,7 +246,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" id="confirmGroupLock" data-bs-dismiss="modal">Generate</button>
+        <button class="btn btn-mystic-sapphire rounded-0" id="confirmGroupLock" data-bs-dismiss="modal">Generate</button>
       </div>
     </div>
   </div>
