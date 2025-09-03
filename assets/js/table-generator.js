@@ -103,7 +103,9 @@ document.getElementById('confirmGroupLock').addEventListener('click', () => {
 });
 
 function generateTableWithLocks(lockedGroups) {
-  let seatsPerTable = parseInt(seatsPerTableInput.value, 10);
+
+  let seatsPerTable;
+  const seatsPerTable = parseInt(seatsPerTableInput.value, 10);
   let animStyle = animStyleSelect.value;
   let animSpeed = parseFloat(animSpeedInput.value);
 
@@ -178,4 +180,5 @@ while (remaining.length > 0) {
 
   enableDragDrop();
   updateCounts();
+
 }
