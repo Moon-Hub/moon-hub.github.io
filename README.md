@@ -1,7 +1,7 @@
 # LotusGrid
 A responsive, drag-and-drop table assignment tool for group-based events.
 
-LotusGrid lets you assign people to tables. Whether you're organizing a tournament, dinner party, or collaborative workshop.
+LotusGrid lets you assign people to tables.
 This app makes it easy to lock specific groups, enforce seat limits, and dynamically rearrange participants with intuitive visual feedback.
 
 ---
