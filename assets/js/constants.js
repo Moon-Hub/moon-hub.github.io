@@ -11,5 +11,6 @@ export const animSpeedLabel = document.getElementById('animSpeedLabel');
 export const toasts = {
       full: new bootstrap.Toast(document.getElementById('fullToast')),
       save: new bootstrap.Toast(document.getElementById('saveToast')),
-      load: new bootstrap.Toast(document.getElementById('loadToast'))
+      load: new bootstrap.Toast(document.getElementById('loadToast')),
+      swap: new bootstrap.Toast(document.getElementById('swapToast')),
 };
