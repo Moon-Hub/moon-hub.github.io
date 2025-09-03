@@ -1,5 +1,9 @@
 import { seatsPerTableInput, shuffleSwitch, dedupeSwitch, animStyleSelect, animSpeedInput, animSpeedLabel } from "./constants.js";
 
+let seatsPerTable;
+let animStyle;
+let animSpeed;
+
 if(localStorage.getItem("settings") === null) {
     // Default Values
     seatsPerTable = parseInt(seatsPerTableInput.value, 10);
@@ -112,4 +116,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
 
