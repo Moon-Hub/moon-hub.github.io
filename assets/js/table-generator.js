@@ -1,5 +1,5 @@
 import { enableDragDrop, updateCounts } from './drag-drop.js';
-import { namesInput, seatsPerTableInput, animStyleSelect, animSpeedInput } from './constants.js';
+import { namesInput, seatsPerTableInput, animStyleSelect, animSpeedInput, toasts } from './constants.js';
 
     animSpeedInput.addEventListener('input', () => {
       animSpeed = parseFloat(animSpeedInput.value);
@@ -178,4 +178,5 @@ while (remaining.length > 0) {
 
   enableDragDrop();
   updateCounts();
+
 }
