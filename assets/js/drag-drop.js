@@ -79,7 +79,8 @@ export function updateCounts() {
   containers.forEach(container => {
     const count = container.children.length;
     const badge = container.parentElement.querySelector('.badge-cap');
-    badge.textContent = `${count}/${seatsPerTable}`;
-    badge.className = `badge badge-cap ${count >= seatsPerTable ? 'bg-danger' : 'bg-secondary'}`;
+    // badge.textContent = `${count}/${seatsPerTable}`;
+    // badge.className = `badge badge-cap ${count >= seatsPerTable ? 'bg-danger' : 'bg-secondary'}`;
   });
+
 }
