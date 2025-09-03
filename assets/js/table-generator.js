@@ -10,6 +10,13 @@ document.getElementById('generateBtn').addEventListener('click', () => {
 
   let names = namesInput.value.split('\n').map(n => n.trim()).filter(n => n);
   if (dedupeSwitch.checked) names = [...new Set(names)];
+
+  if (names.length === 0) {
+    toasts.full?.show?.("Please enter at least one name.");
+    return;
+  }
+
+
   let maxTables = Math.ceil(names.length / seatsPerTable);
   openGroupLockModal(names)
 
