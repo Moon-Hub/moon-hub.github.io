@@ -12,7 +12,7 @@ document.getElementById('generateBtn').addEventListener('click', () => {
   if (dedupeSwitch.checked) names = [...new Set(names)];
 
   if (names.length === 0) {
-    toasts.full?.show?.("Please enter at least one name.");
+    toasts.empty.show();
     return;
   }
 
@@ -180,3 +180,4 @@ while (remaining.length > 0) {
   updateCounts();
 
 }
+
