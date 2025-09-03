@@ -25,7 +25,7 @@ This app makes it easy to lock specific groups, enforce seat limits, and dynamic
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **HTML5 / CSS3 / Bootstrap 5**
 - **JavaScript (ES6+)**
