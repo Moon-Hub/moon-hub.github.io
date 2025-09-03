@@ -157,12 +157,12 @@ while (remaining.length > 0) {
     card.style.setProperty('--anim-duration', animSpeed + 's');
     card.innerHTML = `
       <div class="card h-100 rounded-0">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span>Table ${tableNum}</span>
+        <div class="card-header d-flex justify-content-between align-items-center px-2 py-1">
+          <span><strong>Table ${tableNum}</strong></span>
           <span class="badge bg-secondary badge-cap">${tableNames.length}/${seatsPerTable}</span>
         </div>
-        <ul class="list-group list-group-flush min-height" data-table="${tableNum}">
-          ${tableNames.map(n => `<li class="list-group-item" style="--anim-duration:${animSpeed}s">${n}<span class="drag-handle"><i class="bi bi-grip-vertical"></i></span></li>`).join('')}
+        <ul class="list-group list-group-flush min-height drag-handle" data-table="${tableNum}">
+          ${tableNames.map(n => `<li class="list-group-item px-2 py-1">${n}<span class="drag-handle"><i class="bi bi-grip-vertical"></i></span></li>`).join('')}
         </ul>
       </div>
     `;
@@ -178,6 +178,4 @@ while (remaining.length > 0) {
 
   enableDragDrop();
   updateCounts();
-
 }
-
