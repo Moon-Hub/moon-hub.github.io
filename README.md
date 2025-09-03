@@ -30,10 +30,8 @@ This app makes it easy to lock specific groups, enforce seat limits, and dynamic
 - **HTML5 / CSS3 / Bootstrap 5**
 - **JavaScript (ES6+)**
 - **SortableJS** for drag-and-drop behavior - provided under the MIT License
-- **Custom DOM logic** for swap detection, seat enforcement, and visual feedback
 
----
-
+--
 
 ## License
 
