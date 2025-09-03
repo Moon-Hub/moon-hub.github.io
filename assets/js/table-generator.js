@@ -17,7 +17,7 @@ document.getElementById('generateBtn').addEventListener('click', () => {
   }
 
 
-  let maxTables = Math.ceil(names.length / seatsPerTable);
+  let maxTables = Math.ceil(names.length / seatsPerTable.value);
   openGroupLockModal(names)
 
   // Stops the table selector input from exceeding max tables
@@ -181,6 +181,7 @@ while (remaining.length > 0) {
   updateCounts();
 
 }
+
 
 
 
