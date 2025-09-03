@@ -5,9 +5,11 @@ if(localStorage.getItem("settings") === null) {
     seatsPerTable = parseInt(seatsPerTableInput.value, 10);
     animStyle = animStyleSelect.value;
     animSpeed = parseFloat(animSpeedInput.value);
+    const containerSize = 'container-xl'; // default fallback
+
         localStorage.setItem('settings', JSON.stringify({
             seatsPerTable, shuffle: shuffleSwitch.checked, dedupe: dedupeSwitch.checked,
-            animStyle, animSpeed
+            animStyle, animSpeed, containerSize
         }));
     };
 
@@ -17,10 +19,16 @@ document.getElementById('saveSettingsBtn').addEventListener('click', () => {
     seatsPerTable = parseInt(seatsPerTableInput.value, 10);
     animStyle = animStyleSelect.value;
     animSpeed = parseFloat(animSpeedInput.value);
-    localStorage.setItem('settings', JSON.stringify({
-        seatsPerTable, shuffle: shuffleSwitch.checked, dedupe: dedupeSwitch.checked,
-        animStyle, animSpeed
-    }));
+    const settings = JSON.parse(localStorage.getItem('settings')) || {};
+    settings.seatsPerTable = seatsPerTable;
+    settings.shuffle = shuffleSwitch.checked;
+    settings.dedupe = dedupeSwitch.checked;
+    settings.animStyle = animStyle;
+    settings.animSpeed = animSpeed;
+    settings.containerSize = settings.containerSize || 'container-xl'; // fallback
+
+    localStorage.setItem('settings', JSON.stringify(settings));
+
 });
 
 // Load Saved settings
