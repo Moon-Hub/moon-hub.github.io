@@ -155,7 +155,7 @@ while (remaining.length > 0) {
           <span class="badge bg-secondary badge-cap">${tableNames.length}/${seatsPerTable}</span>
         </div>
         <ul class="list-group list-group-flush min-height" data-table="${tableNum}">
-          ${tableNames.map(n => `<li class="list-group-item anim-item-${animStyle}" style="--anim-duration:${animSpeed}s">${n}<span class="drag-handle"><i class="bi bi-grip-vertical"></i></span></li>`).join('')}
+          ${tableNames.map(n => `<li class="list-group-item" style="--anim-duration:${animSpeed}s">${n}<span class="drag-handle"><i class="bi bi-grip-vertical"></i></span></li>`).join('')}
         </ul>
       </div>
     `;
