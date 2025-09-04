@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lotus Grid</title>
    <link rel="icon" type="image/x-icon" href="./assets/img/LotusGridLogo.png">
+   <style>
+#appContainer {
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+
+   </style>
 
   <!-- Bootstrap & Bootstrap Icons -->
 
@@ -31,7 +38,7 @@
         </button>
         <button class="btn btn-obsidian rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#inputCollapse" aria-expanded="true" aria-controls="inputCollapse">
           <i class="bi bi-toggles"></i> Hide Input
-        </button>
+        </button>          
         <button id="timerBtn" class="btn btn-obsidian rounded-0">
           <i class="bi bi-stopwatch"></i> Start Timer
         </button>
@@ -90,8 +97,8 @@
                 <ul class="list-group list-group-flush pt-1">
                   <li class="list-group-item p-1">
                     <div class="form-check p-0">
-                      <label for="seatsPerTable" class="form-label">Seats per table</label>
-                      <input id="seatsPerTable" type="number" class="form-control rounded-0" min="1" value="4">
+                      <label for="seatsPerTableInp" class="form-label">Seats per table</label>
+                      <input id="seatsPerTableInp" type="number" class="form-control rounded-0" min="1" value="4">
                     </div>
                   </li>
                 </ul>
@@ -235,7 +242,7 @@
   </div>
 
   <div class="modal fade" id="groupLockModal" tabindex="-1" aria-labelledby="groupLockLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+  <div class="modal-dialog modal-dialog-scrollable modal-xl">
     <div class="modal-content rounded-0">
       <div class="modal-header">
         <h5 class="modal-title" id="groupLockLabel">Customise Group Locks</h5>
@@ -273,5 +280,4 @@
   <script src="./assets/js/saved-settings.js" type="module"></script>
   <script src="./assets/js/layout.js" type="module"></script>
 </body>
-
 </html>
