@@ -148,7 +148,7 @@ function generateTableWithLocks(lockedGroups) {
     nextTableNum++;
   }
 
-  const headerColors = ['bg-primary','bg-secondary','bg-success','bg-danger','bg-warning','bg-info','bg-dark' ];
+  const headerColors = ['bg-primary','bg-secondary','bg-success','bg-danger','bg-warning','bg-info','bg-dark'];
 
   // Render tables
   Object.entries(tableMap).forEach(([tableNum, tableNames], i) => {
