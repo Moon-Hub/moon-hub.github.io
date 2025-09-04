@@ -89,7 +89,7 @@ document.getElementById('confirmGroupLock').addEventListener('click', () => {
   const cards = document.querySelectorAll('#groupLockList .card');
 
   cards.forEach((card, i) => {
-    const name = card.querySelector('strong').textContent;
+    const name = card.querySelector('span').textContent;
     const isLocked = card.querySelector(`#lock-${i}`).checked;
     const tableNum = parseInt(card.querySelector(`#table-${i}`).value, 10);
 
