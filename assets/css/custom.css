@@ -16,7 +16,8 @@
     .navbar {background-color: var(--obsidian-base);}
     .navbar-brand img { margin-right:10px; }
     .navbar a {color: var(--bs-light);}
-    .navbar a:hover {color: var(--arcane-gold);}
+    .navbar a:hover {color: var(--arcane-gold-light);}
+    .navbar a:hover:active, .navbar a:focus { color: var(--arcane-gold-dark);}
 
     .btn-obsidian { background-color: var(--obsidian-base); color: var(--bs-light);}
     .btn-obsidian:hover, .btn-obsidian:hover:active { background-color: var(--obsidian-deep); color: var(--arcane-gold-light); border: 1px solid var(--obsidian-deep)}
@@ -36,3 +37,4 @@
     code { color: rgba(13,110,253,.5) }
 
     .vr { background-color: var(--arcane-gold-light); width: 1px;}
+    .font-big {font-size:2rem;}
