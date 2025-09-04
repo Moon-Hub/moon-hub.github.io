@@ -38,3 +38,5 @@
 
     .vr { background-color: var(--arcane-gold-light); width: 1px;}
     .font-big {font-size:2rem;}
+
+    .col-md-6:first-child { padding-right: 0px !important;}
