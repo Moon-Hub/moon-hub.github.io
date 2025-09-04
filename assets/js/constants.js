@@ -1,6 +1,6 @@
 export const namesInput = document.getElementById('names');
 export const output = document.getElementById('output');
-export const seatsPerTableInput = document.getElementById('seatsPerTable');
+export const seatsPerTableInput = document.getElementById('seatsPerTableInp');
 export const shuffleSwitch = document.getElementById('shuffleSwitch');
 export const dedupeSwitch = document.getElementById('dedupeSwitch');
 export const animStyleSelect = document.getElementById('animStyle');

@@ -1,8 +1,11 @@
+import { seatsPerTableInput } from "./constants.js";
 import { toasts } from "./constants.js";
+
 
 export function enableDragDrop() {
   const appContainer = document.getElementById('appContainer');
   const containers = appContainer.querySelectorAll('.list-group');
+  const seatsPerTable = parseInt(seatsPerTableInput.value, 10);
   const sortables = [];
 
 
@@ -75,12 +78,12 @@ export function updateCounts() {
 
   const appContainer = document.getElementById('appContainer');
   const containers = appContainer.querySelectorAll('.list-group');
+  const seatsPerTable = parseInt(seatsPerTableInput.value, 10);
 
   containers.forEach(container => {
     const count = container.children.length;
     const badge = container.parentElement.querySelector('.badge-cap');
-    // badge.textContent = `${count}/${seatsPerTable}`;
-    // badge.className = `badge badge-cap ${count >= seatsPerTable ? 'bg-danger' : 'bg-secondary'}`;
+    badge.textContent = `${count}/${seatsPerTable}`;
+    badge.className = `badge badge-cap ${count >= seatsPerTable ? 'bg-danger' : 'bg-secondary'}`;
   });
-
 }

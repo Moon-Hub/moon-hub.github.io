@@ -9,6 +9,7 @@ import { namesInput, seatsPerTableInput, animStyleSelect, animSpeedInput, toasts
 document.getElementById('generateBtn').addEventListener('click', () => {
 
   let names = namesInput.value.split('\n').map(n => n.trim()).filter(n => n);
+
   if (dedupeSwitch.checked) names = [...new Set(names)];
 
   if (names.length === 0) {
@@ -16,30 +17,30 @@ document.getElementById('generateBtn').addEventListener('click', () => {
     return;
   }
 
+  const seatsPerTable = parseInt(seatsPerTableInput.value, 10);
+  const maxTables = Math.ceil(names.length / seatsPerTable);
 
-  let maxTables = Math.ceil(names.length / seatsPerTable.value);
   openGroupLockModal(names)
 
-  // Stops the table selector input from exceeding max tables
+  // Limit table selector inputs (doesnt go over max tables)
   document.querySelectorAll('[id^="table-"]').forEach(input => {
-      input.addEventListener('keydown', e => {
-      // Allow arrow keys, tab, and other navigation
-        const allowedKeys = [
-          'ArrowUp', 'ArrowDown', 'Tab', 'Shift', 'Control', 'Alt',
-          'Home', 'End', 'Escape'
-        ];
-        if (!allowedKeys.includes(e.key)) {
-          e.preventDefault();
-        }
-      });
-
-      input.max = maxTables;
-      if (parseInt(input.value, 10) > maxTables) {
-        input.value = ''; // or clamp to maxTables
+    input.addEventListener('keydown', e => {
+      const allowedKeys = [
+        'ArrowUp', 'ArrowDown', 'Tab', 'Shift', 'Control', 'Alt',
+        'Home', 'End', 'Escape'
+      ];
+      if (!allowedKeys.includes(e.key)) {
+        e.preventDefault();
       }
     });
-    
-  //Visual Lock Change
+
+    input.max = maxTables;
+    if (parseInt(input.value, 10) > maxTables) {
+      input.value = '';
+    }
+  });
+ 
+  // Visual lock toggle
   const lockList = document.getElementById('groupLockList');
   const toggles = lockList.querySelectorAll('.group-lock-toggle');
 
@@ -47,15 +48,14 @@ document.getElementById('generateBtn').addEventListener('click', () => {
     const label = lockList.querySelector(`label[for="${toggle.id}"]`);
     const icon = label.querySelector('i');
 
-    // Sync initial state
     icon.className = toggle.checked ? 'bi bi-lock-fill' : 'bi bi-unlock-fill';
 
-    // Toggle icon on checkbox change
     toggle.addEventListener('change', () => {
       icon.className = toggle.checked ? 'bi bi-lock-fill' : 'bi bi-unlock-fill';
     });
   });
 });
+
 
 function openGroupLockModal(names) {
   const container = document.getElementById('groupLockList');
@@ -66,7 +66,7 @@ function openGroupLockModal(names) {
     div.className = 'col-lg-6';
     div.innerHTML = `
       <div class="card p-2 d-flex flex-row align-items-center rounded-0">
-        <strong class="flex-grow-1">${name}</strong>
+        <span class="flex-grow-1">${name}</span>
         <div class="form-check mx-3 mb-0 d-flex flex-row align-items-center">
           <input class="form-check-input group-lock-toggle rounded-0" type="checkbox" id="lock-${index}">
           <label class="form-check-label ps-2" for="lock-${index}"><i class="bi bi-unlock-fill"></i></label>
@@ -86,41 +86,37 @@ function openGroupLockModal(names) {
 
 document.getElementById('confirmGroupLock').addEventListener('click', () => {
   const lockedGroups = [];
-  const names = document.querySelectorAll('#groupLockList .card');
+  const cards = document.querySelectorAll('#groupLockList .card');
 
-  names.forEach((card, i) => {
+  cards.forEach((card, i) => {
     const name = card.querySelector('strong').textContent;
     const isLocked = card.querySelector(`#lock-${i}`).checked;
-    const tableNum = parseInt(card.querySelector(`#table-${i}`).value);
+    const tableNum = parseInt(card.querySelector(`#table-${i}`).value, 10);
 
     if (isLocked && tableNum) {
       lockedGroups.push({ name, table: tableNum });
     }
   });
 
-  // Pass lockedGroups to your table generator
   generateTableWithLocks(lockedGroups);
 });
 
 function generateTableWithLocks(lockedGroups) {
-    
-  let seatsPerTable;
-  seatsPerTable = parseInt(seatsPerTableInput.value, 10);
-  let animStyle = animStyleSelect.value;
-  let animSpeed = parseFloat(animSpeedInput.value);
-
+  const seatsPerTable = parseInt(seatsPerTableInput.value, 10);
+  const animStyle = animStyleSelect.value;
+  const animSpeed = parseFloat(animSpeedInput.value);
 
   let names = namesInput.value.split('\n').map(n => n.trim()).filter(n => n);
+
   if (dedupeSwitch.checked) names = [...new Set(names)];
   if (shuffleSwitch.checked) names.sort(() => Math.random() - 0.5);
 
-  // Remove locked names from pool
   const lockedNames = lockedGroups.map(g => g.name);
   const unlockedNames = names.filter(n => !lockedNames.includes(n));
 
   output.innerHTML = '';
   const colClass = 'col-md-6';
-  let tableMap = {};
+  const tableMap = {};
 
   // Insert locked groups
   lockedGroups.forEach(({ name, table }) => {
@@ -128,42 +124,52 @@ function generateTableWithLocks(lockedGroups) {
     tableMap[table].push(name);
   });
 
-const usedTableNums = new Set(lockedGroups.map(g => g.table));
-let remaining = [...unlockedNames];
+  const usedTableNums = new Set(lockedGroups.map(g => g.table));
+  let remaining = [...unlockedNames];
 
-// Fill existing tables first
-for (const tableNum of usedTableNums) {
-  const current = tableMap[tableNum] || [];
-  while (current.length < seatsPerTable && remaining.length > 0) {
-    current.push(remaining.shift());
+  // Fill existing tables
+  for (const tableNum of usedTableNums) {
+    const current = tableMap[tableNum] || [];
+    while (current.length < seatsPerTable && remaining.length > 0) {
+      current.push(remaining.shift());
+    }
+    tableMap[tableNum] = current;
   }
-  tableMap[tableNum] = current;
-}
 
-// Start new tables from 1 upward, skipping used ones
-let nextTableNum = 1;
-while (remaining.length > 0) {
-  while (usedTableNums.has(nextTableNum)) nextTableNum++;
-  const newTable = [];
-  while (newTable.length < seatsPerTable && remaining.length > 0) {
-    newTable.push(remaining.shift());
+  // Create new tables
+  let nextTableNum = 1;
+  while (remaining.length > 0) {
+    while (usedTableNums.has(nextTableNum)) nextTableNum++;
+    const newTable = [];
+    while (newTable.length < seatsPerTable && remaining.length > 0) {
+      newTable.push(remaining.shift());
+    }
+    tableMap[nextTableNum] = newTable;
+    nextTableNum++;
   }
-  tableMap[nextTableNum] = newTable;
-  nextTableNum++;
-}
+
+  const headerColors = ['bg-primary','bg-secondary','bg-success','bg-danger','bg-warning','bg-info','bg-dark' ];
 
   // Render tables
   Object.entries(tableMap).forEach(([tableNum, tableNames], i) => {
     const card = document.createElement('div');
     card.className = `${colClass} mb-3 anim-card-${animStyle}`;
     card.style.setProperty('--anim-duration', animSpeed + 's');
+
+    // Pick a random header color
+    const randomColor = headerColors[Math.floor(Math.random() * headerColors.length)];
+
     card.innerHTML = `
       <div class="card h-100 rounded-0">
-        <div class="card-header d-flex justify-content-between align-items-center px-2 py-1">
-          <span>Table ${tableNum}</span>
+        <div class="card-header d-flex justify-content-between align-items-center px-2 py-1 text-white ${randomColor} rounded-0 font-big">
+          <span><strong>Table ${tableNum}</strong></span>
+          <span class="badge bg-secondary badge-cap">${tableNames.length}/${seatsPerTable}</span>
         </div>
         <ul class="list-group list-group-flush min-height" data-table="${tableNum}">
-          ${tableNames.map(n => `<li class="list-group-item px-2 py-1" style="--anim-duration:${animSpeed}s">${n}<span class="drag-handle"><i class="bi bi-grip-vertical"></i></span></li>`).join('')}
+          ${tableNames.map(n => `
+            <li class="list-group-item font-big px-2 py-1" style="--anim-duration:${animSpeed}s">
+              ${n}<span class="drag-handle"><i class="bi bi-grip-vertical"></i></span>
+            </li>`).join('')}
         </ul>
       </div>
     `;
@@ -179,11 +185,4 @@ while (remaining.length > 0) {
 
   enableDragDrop();
   updateCounts();
-
 }
-
-
-
-
-
-
