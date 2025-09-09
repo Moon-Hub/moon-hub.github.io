@@ -6,14 +6,14 @@
         --deep-night: #0C1C2E;
         --arcane-blue:#122639;
 
-        --mystic-sapphire: #0F52BA;
+        /* Potential */
         --celestial-azure: #4A90E2;
         --runestone-gray: #6E7F80;
         --eldritch-violet: #6B3FA0;
         --enchanted-ember: #C1440E;
         --moonlit-silver: #C0C0C0;
 
-        /* --obsidian-shadow: #1C1C1C; */
+        /* Obsidian Shadow: #1C1C1C; */
         --obsidian-lightest: #A6A6A6;
         --obsidian-light: #737373;
         --obsidian-mid: #4D4D4D;
@@ -21,7 +21,7 @@
         --obsidian-deep: #141414;
         --obsidian-darkest: #0A0A0A;
 
-        /* --mystic-sapphire: #0F52BA; */
+        /* Mystic Sapphire: #0F52BA; */
         --sapphire-lightest: #B3CFF0;
         --sapphire-light: #6699D6;
         --sapphire-mid: #336EBF;
@@ -29,4 +29,10 @@
         --sapphire-deep: #0B3E8C;
         --sapphire-darkest: #072B61;
 
+        /* Arcane Gold*/
+        --arcane-gold-dark: #B3893C;
+        --arcane-gold-light: #D4AF37;
+        
+        --sidebar-width: 180px;
+        --sidebar-width-collapsed: 80px;
     }
