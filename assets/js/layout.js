@@ -36,7 +36,7 @@ document.getElementById('loadBtn').addEventListener('click', () => {
         </div>
         <ul class="list-group list-group-flush min-height" data-table="${idx + 1}">
           ${tableNames.map(n => `
-            <li class="list-group-item font-big px-2 py-1" style="--anim-duration:${animSpeed}s">
+            <li class="list-group-item font-big px-2 py-1 fw-bold" style="--anim-duration:${animSpeed}s">
               ${n}<span class="drag-handle"><i class="bi bi-grip-vertical"></i></span>
             </li>`).join('')}
         </ul>

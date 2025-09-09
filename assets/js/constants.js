@@ -13,5 +13,6 @@ export const toasts = {
       save: new bootstrap.Toast(document.getElementById('saveToast')),
       load: new bootstrap.Toast(document.getElementById('loadToast')),
       swap: new bootstrap.Toast(document.getElementById('swapToast')),
-      empty: new bootstrap.Toast(document.getElementById('emptyToast'))
+      empty: new bootstrap.Toast(document.getElementById('emptyToast')),
+      except: new bootstrap.Toast(document.getElementById('exceptionToast'))
 };

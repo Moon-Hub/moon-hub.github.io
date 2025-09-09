@@ -83,12 +83,6 @@ updateTimerDisplay();
         setTimeout(() => modalContent.classList.remove('flash'), 3000);
     }
 
-    // Open Modal for Timer
-        document.getElementById('timerBtn').addEventListener('click', () => {
-        const modal = new bootstrap.Modal(document.getElementById('timerModal'));
-        modal.show();
-    });
-
     // On Start Click
     startPauseBtn.addEventListener('click', () => {
         if (timerInterval) {

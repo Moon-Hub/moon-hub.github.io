@@ -56,7 +56,7 @@ animSpeedInput.addEventListener('input', () => {
 // Apply container size on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   const appContainer = document.getElementById('appContainer');
-  const navContainer = document.getElementById('navContainer');
+  // const navContainer = document.getElementById('navContainer');
   const buttons = document.querySelectorAll('[data-size]');
   const sizes = ['container-xl', 'container-xxl', 'container-fluid'];
 
@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedSettings && savedSettings.containerSize) {
     sizes.forEach(cls => {
       appContainer.classList.remove(cls);
-      navContainer.classList.remove(cls);
+      //navContainer.classList.remove(cls);
     });
 
     appContainer.classList.add(savedSettings.containerSize);
-    navContainer.classList.add(savedSettings.containerSize);
+    //navContainer.classList.add(savedSettings.containerSize);
 
     // Highlight the correct button
     buttons.forEach(btn => {
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Add the selected container class
       const containerClass = `container-${size}`;
       appContainer.classList.add(containerClass);
-      navContainer.classList.add(containerClass);
+      //navContainer.classList.add(containerClass);
 
       // Highlight active button
       buttons.forEach(btn => {

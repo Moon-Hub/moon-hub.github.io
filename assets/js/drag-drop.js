@@ -1,5 +1,4 @@
-import { seatsPerTableInput } from "./constants.js";
-import { toasts } from "./constants.js";
+import { seatsPerTableInput, toasts } from "./constants.js";
 
 
 export function enableDragDrop() {
