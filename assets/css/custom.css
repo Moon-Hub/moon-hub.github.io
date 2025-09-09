@@ -77,7 +77,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.sidebar.collapsed {
+.sidebar.collapsed-men {
     width: var(--sidebar-width-collapsed);
 }
 
@@ -106,7 +106,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.collapsed~.main-content {
+.collapsed-men~.main-content {
     margin-left: var(--sidebar-width-collapsed);
 }
 
@@ -125,19 +125,18 @@ body {
     transition: transform 0.3s ease;
 }
 
-.collapsed .toggle-btn {
+.collapsed-men .toggle-btn {
     transform: rotate(180deg);
 }
 
-.collapsed .hide-on-collapse {
+.collapsed-men .hide-on-collapse {
     opacity: 0;
     visibility: hidden;
     display:none;
     transition: transform 0.3s ease;
-    color: #1C1C1C;
 }
 
-.collapsed .sidebar-link {
+.collapsed-men .sidebar-link {
     text-align: center;
     padding: 1rem !important;
     margin: 0px 8px;
@@ -145,6 +144,10 @@ body {
 
 .collapse {
   transition: height 0.2s ease-in-out;
+}
+
+.list-group-item.active {
+    background: var(--sapphire-base);
 }
 
 
