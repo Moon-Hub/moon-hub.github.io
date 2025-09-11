@@ -14,5 +14,6 @@ export const toasts = {
       load: new bootstrap.Toast(document.getElementById('loadToast')),
       swap: new bootstrap.Toast(document.getElementById('swapToast')),
       empty: new bootstrap.Toast(document.getElementById('emptyToast')),
-      except: new bootstrap.Toast(document.getElementById('exceptionToast'))
+      except: new bootstrap.Toast(document.getElementById('exceptionToast')),
+      del: new bootstrap.Toast(document.getElementById('cantDeleteToast'))
 };
