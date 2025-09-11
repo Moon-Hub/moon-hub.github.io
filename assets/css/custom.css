@@ -150,4 +150,45 @@ body {
     background: var(--sapphire-base);
 }
 
+.bin-zone {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        width: 250px;
+        height: 100px;
+        background-color: var(--bs-danger-bg-subtle);
+        outline: 2px dashed var(--obsidian-deep); outline-offset: -4px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0;
+        transform: scale(0.8);
+        pointer-events: none;
+
+}
+
+.bin-zone.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.bin-zone.drag-over {
+  background-color: #ffd6d6;
+}
+
+.bin-label {
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+
 
