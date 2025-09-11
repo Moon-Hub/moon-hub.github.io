@@ -134,6 +134,9 @@
                                                     <p class="fw-semibold">Move Participant: <span class="fw-normal">Click + Drag </span><br>
                                                     Swap Participants: <span class="fw-normal">Shift + Click + Drag</span></p>
                                                     <p>All Draggable elements are indicated with a <i class="bi bi-grip-vertical"></i>.</p>
+                                                    <p>In the case of participants registering, and then leaving the event without notifying the organiser. <br>
+                                                    Participants can be deleted, when moving a participant a bin will appear in the bottom left. <br>
+                                                    Deleting a participant from a table will also remove them from the Input box so you dont need to delete them for the next round.</p>
                                                 </div>                                                                                                 
                                             </div>
                                         </div>
@@ -205,6 +208,11 @@
                     </div>
                 </div>    
         </main>
+
+        <div id="binZone" class="list-group bin-zone hidden rounded-0">
+            <div class="bin-label"><i class="bi bi-trash3-fill"></i> Trash</div>
+        </div>
+
 
         <!-- Settings Modal -->
         <div class="modal fade" id="settingsModal" tabindex="-1">
@@ -390,6 +398,12 @@
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
             </div>
             </div>
+            <div id="cantDeleteToast" class="toast text-bg-danger border-0">
+            <div class="d-flex">
+                <div class="toast-body">Can't Delete last Participant from Table.</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+            </div>            
             <div id="saveToast" class="toast text-bg-success border-0">
             <div class="d-flex">
                 <div class="toast-body">Layout saved.</div>
